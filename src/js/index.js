@@ -61,6 +61,31 @@ subNavLinks.forEach((a) => {
 });
 // ---------------------------------------------------------
 
+// Display sub nav profile img and user name on scroll using intersection observer
+const profileDetailsContainer = document.getElementById(
+  "profile-details-container"
+);
+
+const subNavLeftSide = document
+  .getElementById("sub-nav-left-side")
+  .querySelectorAll(".profile-info");
+
+const observerFunction = (entries) => {
+  if (entries[0].isIntersecting === false) {
+    subNavLeftSide[0].style.opacity = "1";
+    subNavLeftSide[1].style.opacity = "1";
+    profileDetailsContainer.style.opacity = 0;
+  } else {
+    profileDetailsContainer.style.opacity = 1;
+    subNavLeftSide[0].style.opacity = 0;
+    subNavLeftSide[1].style.opacity = 0;
+  }
+};
+
+const observer = new IntersectionObserver(observerFunction, { threshold: 0.3 });
+observer.observe(profileDetailsContainer);
+// ------------------------------------------------------------
+
 // Dom render function for repository page
 const renderRepos = ({ data }) => {
   const renderTotalRepo = document.getElementById("render-total-repos");
@@ -72,11 +97,17 @@ const renderRepos = ({ data }) => {
   const profileImg2 = document.getElementById("render-profile-img2");
   profileImg2.src = data.user.avatarUrl;
 
+  const profileImg3 = document.getElementById("render-profile-img3");
+  profileImg3.src = data.user.avatarUrl;
+
   const renderName = document.getElementById("render-name");
   renderName.textContent = data.user.name;
 
   const renderUserName = document.getElementById("render-user-name");
   renderUserName.textContent = data.user.login;
+
+  const renderUserName2 = document.getElementById("render-user-name2");
+  renderUserName2.textContent = data.user.login;
 
   const bio = document.getElementById("render-bio");
   bio.textContent = data.user.bio;
