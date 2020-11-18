@@ -200,7 +200,8 @@ a {
   position: sticky;
   position: -webkit-sticky;
   top: 0;
-  width: 100%;
+  // width: 100%;
+  background-color: var(--whiteColor);
   border-bottom: 1px solid var(--lightGrayColor);
   z-index: 10;
 
@@ -216,7 +217,7 @@ a {
   }
 
   .sub-nav {
-    background-color: var(--whiteColor);
+    // background-color: var(--whiteColor);
     display: grid;
     grid-template-columns: 0.35fr 1fr;
 
@@ -306,8 +307,8 @@ a {
           -moz-transition: 0.3s ease all;
           -webkit-transition: 0.3s ease all;
 
-          @media screen and (max-width: 425px) {
-            padding: 0.9rem 0.5rem;
+          @media screen and (max-width: 376px) {
+            padding: 0.9rem 0.3rem;
           }
 
           &:hover {
