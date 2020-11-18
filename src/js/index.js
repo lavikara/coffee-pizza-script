@@ -1,3 +1,5 @@
+import query from "./query/gql";
+
 // Topnav interactivity
 const topNavSvgHover = document
   .getElementById("top-nav")
@@ -58,56 +60,14 @@ subNavLinks.forEach((a) => {
 });
 // ---------------------------------------------------------
 
-// Gighub graphql query
-const repoQuery = () => `{
-  user(login: "lavikara") {
-    avatarUrl
-    company
-    location
-    login
-    name
-    twitterUsername
-    websiteUrl
-    bio
-    starredRepositories(last: 20) {
-      totalCount
-    }
-    followers(first: 20) {
-      totalCount
-    }
-    following(first: 20) {
-      totalCount
-    }
-    topRepositories(last: 20, orderBy: {field: UPDATED_AT, direction: ASC}) {
-      nodes {
-        forkCount
-        isPrivate
-        name
-        primaryLanguage {
-          color
-          name
-        }
-        updatedAt
-        stargazerCount
-        pullRequests(last: 20) {
-          totalCount
-        }
-      }
-      totalCount
-    }
-  }
-}
-`;
-// ----------------------------------------------
-
 // Dom render function for repository page
 const renderRepos = ({ data }) => {
-  // console.log(data);
+  console.log(data);
 };
 // ---------------------------------------------------------------
 
 // Fetch data from github graphql API
-const fetchData = () => {
+const fetchData = async () => {
   const options = {
     method: "post",
     headers: {
@@ -116,12 +76,12 @@ const fetchData = () => {
       Authorization: "bearer " + process.env.GITHUB_KEY,
     },
     body: JSON.stringify({
-      query: repoQuery(),
+      query: query.repoQuery(),
     }),
   };
-  fetch(process.env.BASE_URL, options)
-    .then((res) => res.json())
-    .then(renderRepos);
+  const res = await fetch(process.env.BASE_URL, options);
+  const data = await res.json();
+  renderRepos(data);
 };
 // ----------------------------------------------------------------
 
