@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Buycoin challenge</title>
+    <title>Repo page</title>
   </head>
   <body>
     <div id="landing">
-      <div class="nav-container">
+      <div class="top-nav-container">
         <nav id="top-nav" class="top-nav">
           <ul class="left-side">
             <li>
@@ -99,9 +99,19 @@
             </li>
           </ul>
         </nav>
+        <div class="white-space"></div>
+      </div>
+      <div class="sub-nav-container">
         <nav class="sub-nav container">
-          <ul>
-            <div class="empty-container"></div>
+          <ul id="sub-nav-left-side" class="left-side">
+            <li class="profile-info">
+              <img
+                id="render-profile-img3"
+                alt="profile picture"
+                class="profile-img"
+              />
+            </li>
+            <p id="render-user-name2" class="profile-info"></p>
           </ul>
           <ul id="links" class="links">
             <li>
@@ -181,7 +191,10 @@
       </div>
       <main class="container">
         <div class="profile-column">
-          <div class="profile-img-name-container">
+          <div
+            id="profile-details-container"
+            class="profile-img-name-container"
+          >
             <div class="profile-img-container">
               <img
                 id="render-profile-img2"
@@ -352,6 +365,9 @@
           <!-- Repos rendered with javascript -->
         </div>
       </main>
+      <footer class="container">
+        <h1>footer</h1>
+      </footer>
     </div>
   </body>
 </html>
