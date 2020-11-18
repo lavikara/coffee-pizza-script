@@ -4,6 +4,10 @@
     grid-template-columns: 0.35fr 1fr;
     column-gap: 0.8rem;
 
+    @media screen and (max-width: 760px) {
+      grid-template-columns: 1fr;
+    }
+
     .profile-column {
       position: relative;
       top: -2rem;
@@ -12,17 +16,41 @@
       align-items: flex-start;
       padding: 0 1.4rem;
 
+      @media screen and (max-width: 900px) {
+        padding: 1rem 0rem 1rem 1rem;
+        top: -3rem;
+      }
+
+      @media screen and (max-width: 760px) {
+        top: 0rem;
+        padding: 0 1rem 1rem 1rem;
+      }
+
+      @media screen and (max-width: 365px) {
+        padding: 0rem 0.3rem 1rem 0.3rem;
+      }
+
       .profile-img-name-container {
         opacity: 1;
         transition: 0.1s ease all;
         -moz-transition: 0.1s ease all;
         -webkit-transition: 0.1s ease all;
 
+        @media screen and (max-width: 760px) {
+          display: flex;
+          align-items: center;
+          margin-top: 0.3rem;
+        }
+
         .profile-img-container {
           max-width: 280px;
           position: relative;
           border-radius: 50%;
           z-index: 100;
+
+          @media screen and (max-width: 760px) {
+            max-width: 90px;
+          }
 
           .profile-img {
             width: 100%;
@@ -32,6 +60,12 @@
 
         .profile-name {
           margin-top: 1rem;
+
+          @media screen and (max-width: 760px) {
+            position: relative;
+            top: -1rem;
+            margin-left: 1.5rem;
+          }
 
           .name {
             font-size: 26px;
@@ -77,6 +111,10 @@
         -webkit-transition: 0.3s ease all;
         cursor: pointer;
 
+        @media screen and (max-width: 760px) {
+          margin-bottom: 20px;
+        }
+
         &:hover {
           background-color: rgba(237, 239, 242, var(--opacity7));
         }
@@ -91,6 +129,10 @@
         font-size: 14px;
         font-weight: 600;
         line-height: 21px;
+
+        @media screen and (max-width: 760px) {
+          margin-bottom: 0.2rem;
+        }
 
         svg {
           margin-right: 0.2rem;
@@ -128,6 +170,10 @@
         border-bottom: 1px solid var(--lightGrayColor);
         padding-bottom: 0.8rem;
 
+        @media screen and (max-width: 760px) {
+          border-bottom: none;
+        }
+
         .company-name,
         .location,
         .website,
@@ -150,6 +196,14 @@
             font-size: 12px;
           }
         }
+
+        .company-name,
+        .location,
+        .twitter-name {
+          @media screen and (max-width: 760px) {
+            display: none;
+          }
+        }
       }
     }
 
@@ -158,6 +212,10 @@
       grid-template-rows: auto auto 1fr;
       padding-right: 1.4rem;
 
+      @media screen and (max-width: 760px) {
+        padding: 0rem;
+      }
+
       .find-repo-container {
         display: flex;
         justify-content: space-between;
@@ -165,6 +223,14 @@
 
         @media only screen and (max-width: 900px) {
           flex-direction: column;
+        }
+
+        @media screen and (max-width: 760px) {
+          margin: 0rem 1rem;
+        }
+
+        @media screen and (max-width: 365px) {
+          margin: 0rem 0.3rem;
         }
 
         .find-repo {
@@ -177,6 +243,10 @@
           margin: 1rem 0rem 1rem 0;
           border: 1px solid var(--lightGrayColor);
           outline: none;
+
+          @media only screen and (max-width: 900px) {
+            margin: 1rem 0rem 0rem 0;
+          }
         }
 
         ::placeholder {
@@ -196,6 +266,10 @@
 
             .type-btn {
               margin-right: 0.3rem;
+
+              @media screen and (max-width: 365px) {
+                margin: 0rem;
+              }
             }
 
             @media only screen and (max-width: 900px) {
@@ -252,6 +326,14 @@
         align-items: flex-start;
         border-bottom: 1px solid var(--lightGrayColor);
         padding: 1.9rem 0 2.3rem 0;
+
+        @media screen and (max-width: 760px) {
+          margin: 0 1rem 0 1rem;
+        }
+
+        @media screen and (max-width: 365px) {
+          margin: 0 0.3rem 0 0.3rem;
+        }
 
         .repo-details {
           .repo-name {
