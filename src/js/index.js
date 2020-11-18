@@ -100,6 +100,9 @@ const renderRepos = ({ data }) => {
   const profileImg3 = document.getElementById("render-profile-img3");
   profileImg3.src = data.user.avatarUrl;
 
+  const profileImg4 = document.getElementById("render-profile-img4");
+  profileImg4.src = data.user.avatarUrl;
+
   const renderName = document.getElementById("render-name");
   renderName.textContent = data.user.name;
 
