@@ -408,8 +408,12 @@ a {
 
     .search-icon {
       position: absolute;
-      top: 7px;
-      right: 12px;
+      top: 6px;
+      right: 25px;
+
+      @media screen and (max-width: 425px) {
+        right: 10px;
+      }
     }
 
     ::placeholder {
