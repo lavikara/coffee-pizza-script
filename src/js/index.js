@@ -91,6 +91,9 @@ const renderRepos = ({ data }) => {
   const renderTotalRepo = document.getElementById("render-total-repos");
   renderTotalRepo.textContent = data.user.topRepositories.totalCount;
 
+  const renderTotalRepo2 = document.getElementById("render-total-repos2");
+  renderTotalRepo2.textContent = data.user.topRepositories.totalCount;
+
   const profileImg = document.getElementById("render-profile-img");
   profileImg.src = data.user.avatarUrl;
 
