@@ -4,7 +4,7 @@
   "description": "github repository page",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "node ./scripts/createEnv.js && webpack --mode production",
     "serve": "webpack-dev-server --mode development"
   },
   "author": "Temi Kara",
