@@ -27,7 +27,7 @@
         padding: 0 1rem 1rem 1rem;
       }
 
-      @media screen and (max-width: 365px) {
+      @media screen and (max-width: 376px) {
         padding: 0rem 0.3rem 1rem 0.3rem;
       }
 
@@ -230,7 +230,7 @@
           margin: 0rem 1rem;
         }
 
-        @media screen and (max-width: 365px) {
+        @media screen and (max-width: 376px) {
           margin: 0rem 0.3rem;
         }
 
@@ -276,7 +276,7 @@
             .type-btn {
               margin-right: 0.3rem;
 
-              @media screen and (max-width: 365px) {
+              @media screen and (max-width: 376px) {
                 margin: 0rem;
               }
             }
@@ -299,6 +299,10 @@
             -moz-transition: 0.3s ease all;
             -webkit-transition: 0.3s ease all;
             cursor: pointer;
+
+            @media screen and (max-width: 376px) {
+              padding: 5px 10px;
+            }
 
             &:hover {
               background-color: rgba(237, 239, 242, var(--opacity9));
@@ -438,9 +442,10 @@
   }
 
   footer {
-    display: grid;
-    grid-template-columns: 0.25fr 1fr;
-    // column-gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
     color: var(--darkGrayColor);
     opacity: var(--opacity9);
     font-size: 12px;
@@ -449,35 +454,40 @@
     padding: 2.2rem 1rem 3rem 1rem;
     margin-top: 2.4rem;
 
-    .copyright-container,
-    .links {
-      display: flex;
-      align-items: center;
+    @media screen and (max-width: 900px) {
+      justify-content: center;
     }
 
     .copyright-container {
-      p {
+      display: flex;
+      align-items: center;
+      margin-right: 1rem;
+
+      svg {
+        @media screen and (max-width: 1000px) {
+          display: none;
+        }
+      }
+      h3 {
+        font-size: 12px;
         margin-left: 1.4rem;
+        line-height: 2;
       }
     }
 
-    .links {
-      width: 100%;
-      justify-content: space-between;
+    p {
       color: var(--blueColor);
+      line-height: 2;
+      margin-right: 1rem;
+      cursor: pointer;
 
-      p {
-        margin-right: 1rem;
-        cursor: pointer;
+      &:last-child {
+        margin-right: 0;
+      }
 
-        &:last-child {
-          margin-right: 0;
-        }
-
-        &:hover {
-          text-decoration: underline;
-          text-decoration-color: var(--blueColor);
-        }
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: var(--blueColor);
       }
     }
   }
