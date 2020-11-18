@@ -277,8 +277,6 @@ a {
       margin-left: 0.5rem;
 
       @media screen and (max-width: 680px) {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
         margin-left: 0;
       }
 
@@ -308,6 +306,10 @@ a {
 
           @media screen and (max-width: 425px) {
             font-size: 12px;
+          }
+
+          @media screen and (max-width: 425px) {
+            padding: 0.9rem 0.5rem;
           }
 
           &:hover {
