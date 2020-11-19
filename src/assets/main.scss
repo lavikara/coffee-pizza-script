@@ -24,6 +24,7 @@ body {
   // scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   font-family: var(--primaryFont);
+  visibility: hidden;
   // overflow-x: hidden;
 }
 
@@ -65,6 +66,30 @@ a {
   border-bottom: 0 solid transparent;
   border-left: 4px solid transparent;
   margin-left: 0.3rem;
+}
+
+#loader {
+  border: 5px solid var(--lightGrayColor);
+  border-radius: 50%;
+  border-top: 5px solid var(--darkGrayColor);
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .top-nav-container {
