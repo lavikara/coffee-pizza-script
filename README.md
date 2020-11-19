@@ -1,4 +1,4 @@
-# buycoin-challenge
+# coffee pizza script
 
 A frontend challenge to recreate my github repo page :coffee: :pizza:
 
