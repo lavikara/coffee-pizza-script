@@ -34,6 +34,9 @@ topNavSvgHover.forEach((li) => {
 // Subnav interactivity
 const subNavLinks = document.getElementById("links").querySelectorAll("a");
 const subNavLinksSvg = document.getElementById("links").querySelectorAll("svg");
+const mobileSubNavLinks = document
+  .getElementById("mobile-links")
+  .querySelectorAll("a");
 
 const activeTab = (event) => {
   subNavLinks.forEach((a) => {
@@ -44,6 +47,13 @@ const activeTab = (event) => {
     svg.style.fill = "#6e7d8f";
   });
 
+  mobileSubNavLinks.forEach((a) => {
+    a.classList.remove("active");
+  });
+
+  mobileSubNavLinks.forEach((svg) => {
+    svg.style.fill = "#6e7d8f";
+  });
   if (event.target.localName === "svg") {
     event.path[1].classList.add("active");
     event.path[0].style.fill = "#4b4b4b";
@@ -57,6 +67,9 @@ const activeTab = (event) => {
 };
 
 subNavLinks.forEach((a) => {
+  a.addEventListener("click", activeTab);
+});
+mobileSubNavLinks.forEach((a) => {
   a.addEventListener("click", activeTab);
 });
 // ---------------------------------------------------------
@@ -91,6 +104,9 @@ const renderRepos = ({ data }) => {
   const renderTotalRepo = document.getElementById("render-total-repos");
   renderTotalRepo.textContent = data.user.topRepositories.totalCount;
 
+  const renderTotalRepo2 = document.getElementById("render-total-repos2");
+  renderTotalRepo2.textContent = data.user.topRepositories.totalCount;
+
   const profileImg = document.getElementById("render-profile-img");
   profileImg.src = data.user.avatarUrl;
 
@@ -99,6 +115,9 @@ const renderRepos = ({ data }) => {
 
   const profileImg3 = document.getElementById("render-profile-img3");
   profileImg3.src = data.user.avatarUrl;
+
+  const profileImg4 = document.getElementById("render-profile-img4");
+  profileImg4.src = data.user.avatarUrl;
 
   const renderName = document.getElementById("render-name");
   renderName.textContent = data.user.name;
@@ -147,7 +166,7 @@ const renderRepos = ({ data }) => {
     const otherInfo = document.createElement("div");
     const lang = document.createElement("div");
     const dot = document.createElement("span");
-    const langName = document.createElement("h3");
+    const langName = document.createElement("p");
     const starBtn = document.createElement("button");
     const starSvg = document.createElementNS(
       "http://www.w3.org/2000/svg",
@@ -185,7 +204,7 @@ const renderRepos = ({ data }) => {
       "path"
     );
     const prCount = document.createElement("p");
-    const updateInfo = document.createElement("h3");
+    const updateInfo = document.createElement("p");
     // -----------------------------------------------------------
 
     // Append newly created repo elements into the DOM
@@ -308,26 +327,29 @@ const renderRepos = ({ data }) => {
 // ---------------------------------------------------------------
 
 // Fetch data from github graphql API
-const fetchData = async () => {
-  const options = {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization: "bearer " + process.env.GITHUB_KEY,
-    },
-    body: JSON.stringify({
-      query: query.repoQuery(),
-    }),
-  };
-  const res = await fetch(process.env.BASE_URL, options);
-  const data = await res.json();
-  renderRepos(data);
-};
-// ----------------------------------------------------------------
-
-// Calls fetchData function on load
-window.onload = () => {
-  fetchData();
-};
+(async () => {
+  document.querySelector("#loader").style.visibility = "visible";
+  try {
+    const options = {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: "bearer " + process.env.GITHUB_KEY,
+      },
+      body: JSON.stringify({
+        query: query.repoQuery(),
+      }),
+    };
+    const res = await fetch(process.env.BASE_URL, options);
+    const data = await res.json();
+    renderRepos(data);
+    document.querySelector("#loader").style.display = "none";
+    document.querySelector("body").style.visibility = "visible";
+  } catch (error) {
+    alert(`${error.message}`);
+    document.querySelector("#loader").style.display = "none";
+    document.querySelector("body").style.visibility = "visible";
+  }
+})();
 // ----------------------------------------------------------------

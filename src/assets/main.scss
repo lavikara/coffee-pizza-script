@@ -24,6 +24,7 @@ body {
   // scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   font-family: var(--primaryFont);
+  visibility: hidden;
   // overflow-x: hidden;
 }
 
@@ -67,13 +68,51 @@ a {
   margin-left: 0.3rem;
 }
 
+#loader {
+  border: 5px solid var(--lightGrayColor);
+  border-radius: 50%;
+  border-top: 5px solid var(--darkGrayColor);
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 .top-nav-container {
+  @media screen and (max-width: 760px) {
+    display: none;
+    flex-direction: column;
+  }
+
   .top-nav {
+    position: relative;
     display: flex;
     justify-content: space-between;
     color: var(--whiteColor);
     background-color: var(--darkGrayColor);
     padding: 1rem 1.5rem;
+
+    @media screen and (max-width: 1024px) {
+      padding: 1rem 1rem;
+    }
+
+    @media screen and (max-width: 760px) {
+      padding: 1rem 0.5rem;
+    }
 
     .left-side,
     .right-side {
@@ -133,6 +172,13 @@ a {
       }
     }
 
+    .left-side {
+      @media screen and (max-width: 760px) {
+        width: 57%;
+        justify-content: space-between;
+      }
+    }
+
     .right-side {
       li {
         margin: 0 0.5rem;
@@ -164,6 +210,11 @@ a {
     }
   }
 
+  .mobile-menu {
+    @media screen and (max-width: 760px) {
+    }
+  }
+
   .white-space {
     padding: 0.7rem 0;
     background-color: var(--whiteColor);
@@ -174,25 +225,46 @@ a {
   position: sticky;
   position: -webkit-sticky;
   top: 0;
-  width: 100%;
+  background-color: var(--whiteColor);
   border-bottom: 1px solid var(--lightGrayColor);
   z-index: 10;
 
+  @media screen and (max-width: 760px) {
+    display: none;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
   .sub-nav {
-    background-color: var(--whiteColor);
     display: grid;
     grid-template-columns: 0.35fr 1fr;
+
+    @media screen and (max-width: 760px) {
+      display: block;
+      grid-template-columns: 1fr;
+    }
 
     ul {
       display: flex;
       align-items: center;
       padding: 0 1.4rem;
 
+      @media screen and (max-width: 680px) {
+        display: inline-block;
+      }
+
       &:last-child {
-        padding: 0 0.5rem;
+        padding: 0rem;
       }
 
       li {
+        @media screen and (max-width: 680px) {
+          svg {
+            display: none;
+          }
+        }
         .profile-img {
           height: 32px;
           width: 32px;
@@ -227,6 +299,11 @@ a {
 
     .links {
       display: flex;
+      margin-left: 0.5rem;
+
+      @media screen and (max-width: 680px) {
+        margin-left: 0;
+      }
 
       li {
         display: flex;
@@ -252,6 +329,14 @@ a {
           -moz-transition: 0.3s ease all;
           -webkit-transition: 0.3s ease all;
 
+          @media screen and (max-width: 425px) {
+            font-size: 12px;
+          }
+
+          @media screen and (max-width: 425px) {
+            padding: 0.9rem 0.5rem;
+          }
+
           &:hover {
             border-bottom: 2px solid var(--lightGrayColor);
           }
@@ -273,5 +358,127 @@ a {
         }
       }
     }
+  }
+}
+
+#toggle {
+  display: none;
+
+  @media screen and (max-width: 760px) {
+    display: flex;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    margin: 20px 18px;
+    z-index: 100;
+  }
+}
+
+#toggle:checked ~ .mobile-menu {
+  height: 328px;
+}
+
+/* Menu */
+.mobile-menu {
+  display: none;
+
+  color: #ffffff;
+  background-color: #24292e;
+  list-style: none;
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.4s ease;
+  z-index: 120;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+
+  @media screen and (max-width: 760px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    border-bottom: 1px solid rgba(225, 228, 232, 0.2);
+    padding: 0.5rem 0;
+    margin: 0 1rem;
+
+    &:first-child {
+      padding-top: 0;
+      padding-bottom: 1rem;
+    }
+
+    &:last-child {
+      border: none;
+    }
+
+    .search {
+      width: 94%;
+      color: var(--secondaryFontColor);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 20px;
+      padding: 5px 12px;
+      border: 1px solid rgba(225, 225, 225, 0.3);
+      background: none;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    .search-icon {
+      position: absolute;
+      top: 6px;
+      right: 25px;
+
+      @media screen and (max-width: 425px) {
+        right: 10px;
+      }
+    }
+
+    ::placeholder {
+      color: #ffffff;
+      font-weight: 300;
+      opacity: 0.8;
+    }
+
+    .link-img {
+      margin-right: 0.3rem;
+    }
+
+    .profile-img {
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      object-position: center;
+      object-fit: contain;
+    }
+  }
+}
+
+.desktop900 {
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+}
+
+.mobile900 {
+  display: none;
+
+  @media screen and (max-width: 900px) {
+    display: flex;
+  }
+}
+
+.mobile760 {
+  display: none;
+
+  @media screen and (max-width: 760px) {
+    display: block;
   }
 }
