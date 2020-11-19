@@ -327,26 +327,29 @@ const renderRepos = ({ data }) => {
 // ---------------------------------------------------------------
 
 // Fetch data from github graphql API
-const fetchData = async () => {
-  const options = {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization: "bearer " + process.env.GITHUB_KEY,
-    },
-    body: JSON.stringify({
-      query: query.repoQuery(),
-    }),
-  };
-  const res = await fetch(process.env.BASE_URL, options);
-  const data = await res.json();
-  renderRepos(data);
-};
-// ----------------------------------------------------------------
-
-// Calls fetchData function on load
-window.onload = () => {
-  fetchData();
-};
+(async () => {
+  document.querySelector("#loader").style.visibility = "visible";
+  try {
+    const options = {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: "bearer " + process.env.GITHUB_KEY,
+      },
+      body: JSON.stringify({
+        query: query.repoQuery(),
+      }),
+    };
+    const res = await fetch(process.env.BASE_URL, options);
+    const data = await res.json();
+    renderRepos(data);
+    document.querySelector("#loader").style.display = "none";
+    document.querySelector("body").style.visibility = "visible";
+  } catch (error) {
+    alert(`${error.message}`);
+    document.querySelector("#loader").style.display = "none";
+    document.querySelector("body").style.visibility = "visible";
+  }
+})();
 // ----------------------------------------------------------------
