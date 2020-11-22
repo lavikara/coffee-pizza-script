@@ -21,11 +21,9 @@ body {
   color: var(primaryFontColor);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
-  // scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   font-family: var(--primaryFont);
   visibility: hidden;
-  overflow-x: hidden;
 }
 
 .container {
