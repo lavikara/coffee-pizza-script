@@ -3,6 +3,8 @@ const Dotenv = require("dotenv-webpack");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const autoprefixer = require("autoprefixer");
+const cssnano = require("cssnano");
 
 module.exports = {
   entry: ["./src/js/index.js", "./src/assets/main.scss"],
@@ -30,6 +32,9 @@ module.exports = {
           "css-loader",
           {
             loader: "postcss-loader",
+            options: {
+              plugins: () => [autoprefixer(), cssnano()],
+            },
           },
           "sass-loader",
         ],
