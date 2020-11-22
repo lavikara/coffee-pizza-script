@@ -376,7 +376,7 @@
 
           .other-info {
             display: flex;
-            font-size: 12px;
+            font-size: 10px;
             color: var(--darkGrayColor);
             opacity: var(--opacity9);
             margin-top: 1rem;
@@ -424,6 +424,7 @@
           outline: none;
           border-radius: 6px;
           border: 1px solid rgba(27, 31, 35, 0.15);
+          margin-left: 1rem;
           transition: 0.3s ease all;
           -moz-transition: 0.3s ease all;
           -webkit-transition: 0.3s ease all;
