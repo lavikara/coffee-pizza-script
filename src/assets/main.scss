@@ -21,11 +21,9 @@ body {
   color: var(primaryFontColor);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
-  // scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   font-family: var(--primaryFont);
   visibility: hidden;
-  // overflow-x: hidden;
 }
 
 .container {
@@ -322,6 +320,7 @@ a {
           display: flex;
           align-items: center;
           font-size: 14px;
+          line-height: 20px;
           color: #384049;
           padding: 0.9rem 1rem;
           border-bottom: 2px solid transparent;
@@ -329,11 +328,11 @@ a {
           -moz-transition: 0.3s ease all;
           -webkit-transition: 0.3s ease all;
 
-          @media screen and (max-width: 425px) {
+          @media screen and (max-width: 348px) {
             font-size: 12px;
           }
 
-          @media screen and (max-width: 425px) {
+          @media screen and (max-width: 348px) {
             padding: 0.9rem 0.5rem;
           }
 
@@ -349,7 +348,7 @@ a {
             font-size: 10px;
             text-align: center;
             font-weight: 500;
-            line-height: 18px;
+            line-height: 20px;
             background-color: rgba(209, 213, 218, 0.5);
             border-radius: 2rem;
             padding: 0 6px;
