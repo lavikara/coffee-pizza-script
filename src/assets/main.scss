@@ -25,7 +25,7 @@ body {
   text-rendering: optimizeLegibility;
   font-family: var(--primaryFont);
   visibility: hidden;
-  // overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .container {
@@ -330,12 +330,12 @@ a {
           -moz-transition: 0.3s ease all;
           -webkit-transition: 0.3s ease all;
 
-          @media screen and (max-width: 425px) {
-            // font-size: 12px;
+          @media screen and (max-width: 348px) {
+            font-size: 12px;
           }
 
-          @media screen and (max-width: 425px) {
-            // padding: 0.9rem 2rem;
+          @media screen and (max-width: 348px) {
+            padding: 0.9rem 0.5rem;
           }
 
           &:hover {
